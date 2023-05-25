@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 touchEnd; // 터치 종료 위치 
 
     private PlayerMovement movement;
+    private Animator animator;
 
     private void Awake()
     {
         movement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -75,9 +77,18 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if(touchEnd.y -touchStart.y >= dragDistance)
+        if(touchEnd.y - touchStart.y >= dragDistance)
         {
-            movement.MoveToY();
+            // 점프 실행
+            movement.CheckGround();
+            if (movement.isGround)
+            {
+                if (movement.jumpCount > 0)
+                {
+                    movement.OnJump();
+                }
+            }
+            
             return;
         }
     }

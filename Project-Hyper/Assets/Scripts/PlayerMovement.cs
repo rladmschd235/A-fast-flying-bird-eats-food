@@ -9,14 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private float moveTimeX = 0.1f; // 1회 이동에 소요되는 시간 (x축)
     private bool isXMove = false; // true : 이동 중, false : 이동 가능
 
-    // y축 이동 
-    private float originY = 3f; // 착지하는 y축 값
-    private float gravity = -9.81f; // 중력
-    private float moveTimeY = 0.3f; // 1회 이동에 소요되는 시간 (y축)
-    private bool isJump = false; // true : 점프 중, false : 점프 가능
+    public LayerMask layer;
+    public bool isGround = false;
+    public int jumpCount = 2;
 
     [SerializeField]
     private float moveSpeed = -10f;
+    [SerializeField]
+    private float jumpHeight = 5f;
 
     private Rigidbody rigid;
 
@@ -45,12 +45,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void MoveToY()
-    {
-        if (isJump == true) return;
-        StartCoroutine(OnMoveToY());
-    }
-
     IEnumerator OnMoveToX(int direction)
     {
         float current = 0;
@@ -74,29 +68,25 @@ public class PlayerMovement : MonoBehaviour
         isXMove = false;
     }
 
-    IEnumerator OnMoveToY()
+    public void CheckGround()
     {
-        float current = 0;
-        float persent = 0;
-        float v0 = -gravity;
-
-        isJump = true;
-        //rigid.useGravity = false;
-
-        while (persent < 1)
+        RaycastHit hit;
+        
+        if(Physics.Raycast(transform.position + (Vector3.up * 0.2f), Vector3.down, out hit, 0.4f, layer))
         {
-            current += Time.deltaTime;
-            persent = current / moveTimeY;
-
-            // 시간 경과에 따라 오브젝트의 y위치를 바꿔준다.
-            // 포물선 운동 : 시작 위치 + 초기 속도 + 시간 + 중력 * 시간 제곱
-            float y = originY + (v0 * persent) + (gravity * persent * persent);
-            transform.position = new Vector3(transform.position.x, y * 2f,transform.position.z);
-
-            yield return null;
+            jumpCount = 2;
+            isGround = true;
         }
+        else
+        {
+            isGround = false;
+        }
+    }
 
-        isJump = false;
-        //rigid.useGravity = true;
+    public void OnJump()
+    {
+        Vector3 jumpPower = Vector3.up * jumpHeight;
+        rigid.AddForce(jumpPower, ForceMode.VelocityChange);
+        jumpCount--;
     }
 }

@@ -622,6 +622,18 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 1618364806, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
+      propertyPath: jumpHeight
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618364806, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
+      propertyPath: layer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953670769922633381, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5948665887848184143, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
       propertyPath: m_Name
       value: Player
