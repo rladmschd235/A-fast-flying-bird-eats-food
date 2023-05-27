@@ -9,10 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private float moveTimeX = 0.1f; // 1회 이동에 소요되는 시간 (x축)
     private bool isXMove = false; // true : 이동 중, false : 이동 가능
 
-    public LayerMask layer;
-    public bool isGround = false;
-    public int jumpCount = 2;
-
     [SerializeField]
     private float moveSpeed = -10f;
     [SerializeField]
@@ -68,25 +64,9 @@ public class PlayerMovement : MonoBehaviour
         isXMove = false;
     }
 
-    public void CheckGround()
-    {
-        RaycastHit hit;
-        
-        if(Physics.Raycast(transform.position + (Vector3.up * 0.2f), Vector3.down, out hit, 0.4f, layer))
-        {
-            jumpCount = 2;
-            isGround = true;
-        }
-        else
-        {
-            isGround = false;
-        }
-    }
-
     public void OnJump()
     {
         Vector3 jumpPower = Vector3.up * jumpHeight;
         rigid.AddForce(jumpPower, ForceMode.VelocityChange);
-        jumpCount--;
     }
 }

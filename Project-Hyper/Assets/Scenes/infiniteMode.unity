@@ -598,19 +598,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6468920273765458933, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
   m_PrefabInstance: {fileID: 1656882064}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1618364810
-MonoBehaviour:
+--- !u!65 &1618364815
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456033088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97ee83c3a55d8944a810365c8820f7a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragDistance: 50
+  serializedVersion: 2
+  m_Size: {x: 0.45900607, y: 0.6826227, z: 0.5}
+  m_Center: {x: 0.0000000170299, y: 0.33683887, z: 0}
 --- !u!1001 &1656882064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -619,20 +619,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1618364806, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
-      propertyPath: moveSpeed
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618364806, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
       propertyPath: jumpHeight
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618364806, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
-      propertyPath: layer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 2953670769922633381, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5948665887848184143, guid: 41b8ec2a4137ed443ae67c904e7202ec, type: 3}
       propertyPath: m_Name

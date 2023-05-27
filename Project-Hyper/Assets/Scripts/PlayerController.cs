@@ -10,18 +10,28 @@ public class PlayerController : MonoBehaviour
     private Vector3 touchStart; // 터치 시작 위치
     private Vector3 touchEnd; // 터치 종료 위치 
 
+    private bool isMobile = false;
+    private bool isPC = false;
+
+    public bool isGround = false; // true : 땅에 닿아있을 때, false : 점프 중일 때
+    public int jumpCount = 2;
+    public float dragDelay = 0.5f;
+
     private PlayerMovement movement;
-    private Animator animator;
 
     private void Awake()
     {
         movement = GetComponent<PlayerMovement>();
-        animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()
     {
-        if(Application.isMobilePlatform)
+        if (Application.isMobilePlatform)
         {
             OnMobilePlatform();
         }
@@ -31,7 +41,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnMobilePlatform()
+    private void OnMobilePlatform()  
     {
         // 현재 화면을 터치하고 있지 않으면 메소드 종료
         if (Input.touchCount == 0) return;
@@ -44,11 +54,14 @@ public class PlayerController : MonoBehaviour
         {
             touchStart = touch.position;
         }
-        else if (touch.phase == TouchPhase.Moved)
+        else if(touch.phase == TouchPhase.Moved)
         {
             touchEnd = touch.position;
-
-            OnDragXY();
+        }
+        else if (touch.phase == TouchPhase.Ended)
+        {
+            // 터치 상태로 x축 드래그 범위가 dragDistance보다 클 때
+            StartCoroutine(DragXY());
         }
     }
 
@@ -59,37 +72,48 @@ public class PlayerController : MonoBehaviour
         {
             touchStart = Input.mousePosition;
         }
-        // 터치 & 드래그
-        else if (Input.GetMouseButton(0))
+        else if(Input.GetMouseButton(0))
         {
             touchEnd = Input.mousePosition;
-
-            OnDragXY();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            // 터치 상태로 x축 드래그 범위가 dragDistance보다 클 때
+            StartCoroutine(DragXY());
         }
     }
 
-    private void OnDragXY()
+    IEnumerator DragXY()
     {
-        // 터치 상태로 x축 드래그 범위가 dragDistance보다 클 때
-        if(Mathf.Abs(touchEnd.x - touchStart.x) >= dragDistance)
+        if (Mathf.Abs(touchEnd.x - touchStart.x) >= dragDistance)
         {
             movement.MoveToX((int)Mathf.Sign(touchEnd.x - touchStart.x));
-            return;
+            yield return new WaitForSeconds(dragDelay);
         }
-
-        if(touchEnd.y - touchStart.y >= dragDistance)
+        
+        if (Mathf.Abs(touchEnd.y - touchStart.y) >= dragDistance)
         {
-            // 점프 실행
-            movement.CheckGround();
-            if (movement.isGround)
+            if (jumpCount > 0)
             {
-                if (movement.jumpCount > 0)
-                {
-                    movement.OnJump();
-                }
+                Debug.Log("실행해줘요...");
+                movement.OnJump();
+                jumpCount--;
+                yield return new WaitForSeconds(dragDelay);
             }
-            
-            return;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            jumpCount = 2;
+            isGround = true;
+            Debug.Log("땅");
+        }
+        else
+        {
+            isGround = false;
         }
     }
 }

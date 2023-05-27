@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 34f30712d30697648b80843f9e09934c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 34f30712d30697648b80843f9e09934c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 34f30712d30697648b80843f9e09934c, type: 3}
       propertyPath: m_Name
-      value: Sparrow_Animations Variant
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 34f30712d30697648b80843f9e09934c, type: 3}
       propertyPath: m_Controller
@@ -94,20 +94,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!136 &1764105221
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5948665887848184143}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23658673
-  m_Height: 0.6702423
-  m_Direction: 1
-  m_Center: {x: 0.012658795, y: 0.33512115, z: 0.0013391178}
 --- !u!95 &-8328512562363002290
 Animator:
   serializedVersion: 4
@@ -140,4 +126,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7b0ff222327574f815bbcf94496f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: -10
+  jumpHeight: 1.5
+--- !u!114 &1618364810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5948665887848184143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ee83c3a55d8944a810365c8820f7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragDistance: 50
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  isGround: 0
+  jumpCount: 2
