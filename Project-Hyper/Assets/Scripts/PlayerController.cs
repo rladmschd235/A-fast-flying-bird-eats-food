@@ -24,11 +24,6 @@ public class PlayerController : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         if (Application.isMobilePlatform)
@@ -91,29 +86,29 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(dragDelay);
         }
         
-        if (Mathf.Abs(touchEnd.y - touchStart.y) >= dragDistance)
-        {
-            if (jumpCount > 0)
-            {
-                Debug.Log("Ω««‡«ÿ¡‡ø‰...");
-                movement.OnJump();
-                jumpCount--;
-                yield return new WaitForSeconds(dragDelay);
-            }
-        }
+        //if (Mathf.Abs(touchEnd.y - touchStart.y) >= dragDistance)
+        //{
+        //    if (jumpCount > 0)
+        //    {
+        //        Debug.Log("Ω««‡«ÿ¡‡ø‰...");
+        //        movement.OnJump();
+        //        jumpCount--;
+        //        yield return new WaitForSeconds(dragDelay);
+        //    }
+        //}
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            jumpCount = 2;
-            isGround = true;
-            Debug.Log("∂•");
-        }
-        else
-        {
-            isGround = false;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        jumpCount = 2;
+    //        isGround = true;
+    //        Debug.Log("∂•");
+    //    }
+    //    else
+    //    {
+    //        isGround = false;
+    //    }
+    //}
 }

@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // x축 이동 
-    private float moveXWidth = 5f; // 1회 이동 시 이동 거리 (x축)
+    private float moveXWidth = 2.5f; // 1회 이동 시 이동 거리 (x축)
     private float moveTimeX = 0.1f; // 1회 이동에 소요되는 시간 (x축)
     private bool isXMove = false; // true : 이동 중, false : 이동 가능
 
-    [SerializeField]
-    private float moveSpeed = -10f;
-    [SerializeField]
-    private float jumpHeight = 5f;
+    //[SerializeField]
+    //private float moveSpeed = -10f;
+    //[SerializeField]
+    //private float jumpHeight = 5f;
 
     private Rigidbody rigid;
 
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+        //transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
     }
     
     public void MoveToX(int x)
@@ -64,9 +64,9 @@ public class PlayerMovement : MonoBehaviour
         isXMove = false;
     }
 
-    public void OnJump()
-    {
-        Vector3 jumpPower = Vector3.up * jumpHeight;
-        rigid.AddForce(jumpPower, ForceMode.VelocityChange);
-    }
+    //public void OnJump()
+    //{
+    //    Vector3 jumpPower = Vector3.up * jumpHeight;
+    //    rigid.AddForce(jumpPower, ForceMode.VelocityChange);
+    //}
 }

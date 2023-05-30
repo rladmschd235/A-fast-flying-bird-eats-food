@@ -2,52 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 발판을 주기적으로 재배치 해주는 스크립트
 public class AreaSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] areaPrefabs; // 구역 프리팹 배열
-    [SerializeField]
-    private int spawnerAreaCountAtStart = 3; // 게임 시작 시 최초 생성 되는 구역 개수
-    [SerializeField]
-    private float zDistance = -96; // 구역 사이의 거리(z)
-    private int areaIndex = 0; // 구역 인덱스 배치되는 구역의 z위치 연산에 사용
+    public int count = 8; // 첫 생성 area 개수
+    public GameObject areaPrefabs; // 생성할 발판의 원본 프리팹
+
+    private GameObject[] areas; // 미리 생성한 area들
 
     [SerializeField]
-    private Transform playerTransfrom; // 플레이어 Transform
+    private float zDistance = 12f;
+    private Vector3 spawnPosition = Vector3.zero;
 
     private void Awake()
     {
-        for(int i = 0; i < spawnerAreaCountAtStart; ++i)
+        areas = new GameObject[count];
+
+        for(int index = 0; index < count; index++)
         {
-            if(i == 0)
-            {
-                SpawnArea(false);
-            }
-            else
-            {
-                SpawnArea();
-            }
+            areas[index] = Instantiate(areaPrefabs);
+            areas[index].transform.position = new Vector3(0, 0, index * zDistance);
         }
-    }
-
-    public void SpawnArea(bool isRandom = true)
-    {
-        GameObject clone = null;
-
-        if(isRandom == false)
-        {
-            clone = Instantiate(areaPrefabs[0]);
-        }
-        else
-        {
-            int index = Random.Range(0, areaPrefabs.Length);
-            clone = Instantiate(areaPrefabs[index]);
-        }
-
-        clone.transform.position = new Vector3(0, 0, areaIndex * zDistance);
-
-        clone.GetComponent<Area>().Setup(this, playerTransfrom);
-
-        areaIndex++;
     }
 }
