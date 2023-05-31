@@ -20,7 +20,6 @@ public class EnemySpawner : MonoBehaviour
 [System.Serializable]
 public class SpawnData
 {
-    public int spriteType;
     public int attackPower;
     public int health;
     public float normalSpeed;
