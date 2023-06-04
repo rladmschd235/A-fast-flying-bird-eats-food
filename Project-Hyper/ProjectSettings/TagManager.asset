@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Gecko
+  - Muskrat
+  - Pudu
+  - Rock
   layers:
   - Default
   - TransparentFX
