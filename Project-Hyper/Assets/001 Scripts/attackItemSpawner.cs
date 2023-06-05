@@ -5,7 +5,7 @@ using UnityEngine;
 public class attackItemSpawner : MonoBehaviour
 {
     [SerializeField]
-    private float spawnDelay = 3f;
+    private float spawnDelay = 1.0f;
     private float currentTime;
     public Transform spawnPoint;
 

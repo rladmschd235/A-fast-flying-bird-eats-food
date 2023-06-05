@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager_Play : MonoBehaviour
 {
     public GameObject pauseWindow;
+    public GameObject optionWindow;
 
     private void Update()
     {
@@ -20,5 +21,15 @@ public class UIManager_Play : MonoBehaviour
     public void ClickReplayButton()
     {
         pauseWindow.gameObject.SetActive(false);
+    }
+
+    public void ClickOptionsButton()
+    {
+        optionWindow.gameObject.SetActive(true);
+    }
+
+    public void ClickOptionsExitButton()
+    {
+        optionWindow.gameObject.SetActive(false);
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public Transform[] spawnPoints;
+
+    public SpawnData[] spawnData;
+
     // Start is called before the first frame update
     void Start()
     {
