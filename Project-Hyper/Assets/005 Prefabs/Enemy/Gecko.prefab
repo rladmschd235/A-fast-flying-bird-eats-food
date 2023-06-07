@@ -391,10 +391,12 @@ GameObject:
   - component: {fileID: 7979196013395532419}
   - component: {fileID: 6338841574263709632}
   - component: {fileID: 8187451374493336663}
-  - component: {fileID: -8996119199411496499}
+  - component: {fileID: 868158491}
+  - component: {fileID: 868158490}
+  - component: {fileID: 2849764872720299032}
   m_Layer: 0
   m_Name: Gecko
-  m_TagString: Untagged
+  m_TagString: Gecko
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,9 +408,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6842458599697738422}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3181546861847413592}
@@ -418,7 +420,7 @@ Transform:
   - {fileID: 1252695205835448727}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!205 &6338841574263709632
 LODGroup:
   m_ObjectHideFlags: 0
@@ -470,7 +472,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-8996119199411496499
+--- !u!54 &868158491
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842458599697738422}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &868158490
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842458599697738422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &2849764872720299032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,9 +511,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6842458599697738422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d44ef0f60fbb11244a4ecfc46f38c9bc, type: 3}
+  m_Script: {fileID: 11500000, guid: b1c42f6cf280ca247bb3b0e2a0abe572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 0
+  health: 0
+  maxHealth: 0
+  normalSpeed: 0
+  dashSpeed: 0
 --- !u!1 &7657876676996022963
 GameObject:
   m_ObjectHideFlags: 0

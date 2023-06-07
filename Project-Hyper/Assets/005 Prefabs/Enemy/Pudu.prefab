@@ -480,10 +480,12 @@ GameObject:
   - component: {fileID: 3161298468613301832}
   - component: {fileID: 6795331777207300919}
   - component: {fileID: 6147876873679586677}
-  - component: {fileID: 7888513392480572320}
+  - component: {fileID: 908804515}
+  - component: {fileID: 908804514}
+  - component: {fileID: -1065765058813525048}
   m_Layer: 0
   m_Name: Pudu
-  m_TagString: Untagged
+  m_TagString: Pudu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,9 +497,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5279811246306103102}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7905493785005708669}
@@ -507,7 +509,7 @@ Transform:
   - {fileID: 5517224156549961241}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!205 &6795331777207300919
 LODGroup:
   m_ObjectHideFlags: 0
@@ -559,7 +561,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7888513392480572320
+--- !u!54 &908804515
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5279811246306103102}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &908804514
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5279811246306103102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 0.9
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.3, z: 0}
+--- !u!114 &-1065765058813525048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -568,9 +600,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5279811246306103102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d44ef0f60fbb11244a4ecfc46f38c9bc, type: 3}
+  m_Script: {fileID: 11500000, guid: b1c42f6cf280ca247bb3b0e2a0abe572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 0
+  health: 0
+  maxHealth: 0
+  normalSpeed: 0
+  dashSpeed: 0
 --- !u!1 &5512041106863543837
 GameObject:
   m_ObjectHideFlags: 0
