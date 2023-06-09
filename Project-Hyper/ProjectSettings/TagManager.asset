@@ -8,6 +8,7 @@ TagManager:
   - Gecko
   - Muskrat
   - Pudu
+  - Bomb
   - Rock
   layers:
   - Default

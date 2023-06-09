@@ -19,9 +19,9 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Rock"))
+        if (collision.collider.CompareTag("Bomb"))
         {
-            health -= collision.gameObject.GetComponent<Rock>().damage;
+            health -= collision.gameObject.GetComponent<Bomb>().damage;
             anim.SetTrigger("OnHit");
             collision.gameObject.SetActive(false);
         }

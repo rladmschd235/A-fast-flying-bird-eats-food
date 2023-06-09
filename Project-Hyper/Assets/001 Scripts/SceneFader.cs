@@ -24,6 +24,6 @@ public class SceneFader : MonoBehaviour
             yield return new WaitForSeconds(0.01f); // 0.01초 마다 실행
             panel.color = new Color(0, 0, 0, fadeCount); // 변수 값으로 알파 값 지정
         }
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("PlayScene");
     }
 }
