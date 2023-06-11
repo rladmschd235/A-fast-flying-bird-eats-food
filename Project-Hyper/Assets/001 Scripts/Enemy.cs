@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bomb"))
         {
+            if(health <= 0)
+            {
+                GameManager.instance.enemySpawner.spawnCount -= 1;
+                gameObject.SetActive(false);
+            }
             health -= collision.gameObject.GetComponent<Bomb>().damage;
             anim.SetTrigger("OnHit");
             collision.gameObject.SetActive(false);

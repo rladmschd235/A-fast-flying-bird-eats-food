@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public SpawnData[] spawnData;
 
     private float currentTime;
+    public int spawnCount = 0;
     public float spawnTime;
 
     private void Awake()
@@ -21,11 +22,16 @@ public class EnemySpawner : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if (currentTime > spawnTime)
+        if(spawnCount < 4)
         {
-            currentTime = 0;
-            Spawn(RandomEnemyType());
+            if (currentTime > spawnTime)
+            {
+                currentTime = 0;
+                Spawn(RandomEnemyType());
+                spawnCount++;
+            }
         }
+        Debug.Log(spawnCount);
     }
 
     private int RandomEnemyType()

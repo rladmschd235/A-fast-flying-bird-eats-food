@@ -6,9 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class UIManager_Intro : MonoBehaviour
 {
+    public GameObject UIComponent;
+    public GameObject optionWindow;
+
+    private void Awake()
+    {
+        UIComponent.gameObject.SetActive(true);
+        optionWindow.gameObject.SetActive(false);
+    }
+
     public void ClickSetttingButton()
     {
-        Debug.Log("설정 창 출력");
+        UIComponent.gameObject.SetActive(false);
+        optionWindow.gameObject.SetActive(true);
+    }
+
+    public void ClickSetttingExitButton()
+    {
+        UIComponent.gameObject.SetActive(true);
+        optionWindow.gameObject.SetActive(false);
     }
 
     public void ClickStartButton()
