@@ -31,7 +31,6 @@ public class EnemySpawner : MonoBehaviour
                 spawnCount++;
             }
         }
-        Debug.Log(spawnCount);
     }
 
     private int RandomEnemyType()
