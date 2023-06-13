@@ -31,7 +31,6 @@ public class PoolManager : MonoBehaviour
         {
             if (!Item.activeSelf)
             {
-                Debug.Log("持失");
                 select = Item;
                 select.SetActive(true);
                 break;
@@ -40,7 +39,6 @@ public class PoolManager : MonoBehaviour
 
         if (select == null)
         {
-            Debug.Log("持失");
             select = Instantiate(prefabs[index], transform);
             pools[index].Add(select);
         }

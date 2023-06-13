@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     public float normalSpeed;
     public float dashSpeed;
+    private int posIndex;
 
     private Animator anim;
 
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
             if(health <= 0)
             {
                 GameManager.instance.enemySpawner.spawnCount -= 1;
-                gameObject.SetActive(false);
+                anim.SetTrigger("OnDie");
             }
             health -= collision.gameObject.GetComponent<Bomb>().damage;
             anim.SetTrigger("OnHit");
@@ -32,12 +33,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Init(SpawnData data)
+    private void OnDeath()
+    {
+        GameManager.instance.enemySpawner.spawnCount--;
+        GameManager.instance.enemySpawner.posCheck[posIndex-1] = 0;
+        gameObject.SetActive(false);
+    }
+
+    public void Init(SpawnData data, int idx)
     {
         attackPower = data.attackPower;
         maxHealth = data.health;
         health = maxHealth;
         normalSpeed = data.normalSpeed;
         dashSpeed = data.dashSpeed;
+        posIndex = data.posIndex = idx;
     }
 }

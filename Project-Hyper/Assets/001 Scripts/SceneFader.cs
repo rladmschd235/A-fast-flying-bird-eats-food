@@ -9,21 +9,30 @@ public class SceneFader : MonoBehaviour
 {
     public Image panel;
 
-    public void FadeIn()
+    public void FadeIn(int sceneIndex)
     {
-        StartCoroutine(FadeCoroutine());
+        StartCoroutine(FadeCoroutine(sceneIndex));
     }
 
-    IEnumerator FadeCoroutine()
+    IEnumerator FadeCoroutine(int sceneIndex)
     {
         panel.gameObject.SetActive(true); // 판넬 활성화
         float fadeCount = 0; // 처음 알파 값
+        print(fadeCount);
         while(fadeCount < 1.0f) // 알파 최대 값 1.0까지 반복
         {
             fadeCount += 0.01f;
-            yield return new WaitForSeconds(0.01f); // 0.01초 마다 실행
+            yield return new WaitForSecondsRealtime(0.01f); // 0.01초 마다 실행
             panel.color = new Color(0, 0, 0, fadeCount); // 변수 값으로 알파 값 지정
         }
-        SceneManager.LoadScene("PlayScene");
+        
+        if(sceneIndex == 0)
+        {
+            SceneManager.LoadScene("PlayScene");
+        }
+        else if(sceneIndex == 1)
+        {
+            SceneManager.LoadScene("IntroScene");
+        }
     }
 }
