@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public PoolManager pool;
     public EnemySpawner enemySpawner;
+    public UIManager_Play UIManager_Play;
 
     private void Awake()
     {

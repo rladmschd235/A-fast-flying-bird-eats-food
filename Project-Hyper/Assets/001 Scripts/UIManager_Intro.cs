@@ -9,6 +9,11 @@ public class UIManager_Intro : MonoBehaviour
     public GameObject UIComponent;
     public GameObject optionWindow;
 
+    private void OnEnable()
+    {
+        Time.timeScale = 1;
+    }
+
     private void Awake()
     {
         UIComponent.gameObject.SetActive(true);

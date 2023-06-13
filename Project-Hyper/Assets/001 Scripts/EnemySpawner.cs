@@ -59,7 +59,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn(int enemyType)
     {
-        GameObject enemy = GameManager.instance.pool.Get(enemyType);
         //enemy.transform.position = spawnPoints[posType].position;
         int posIdx = RandomPosition();
         if (posIdx == -1)
@@ -68,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log(posIdx);
+            GameObject enemy = GameManager.instance.pool.Get(enemyType);
             enemy.transform.position = spawnPoints[posIdx].position;
             enemy.GetComponent<Enemy>().Init(spawnData[enemyType - 1], posIdx);
         }  

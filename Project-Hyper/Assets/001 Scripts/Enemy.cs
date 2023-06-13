@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     public float normalSpeed;
     public float dashSpeed;
-    private int posIndex;
+    public int posIndex;
 
     private Animator anim;
 
@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDeath()
     {
+        GameManager.instance.UIManager_Play.GetScore(1);
         GameManager.instance.enemySpawner.spawnCount--;
         GameManager.instance.enemySpawner.posCheck[posIndex-1] = 0;
         gameObject.SetActive(false);
