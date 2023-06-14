@@ -5,5 +5,4 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     public float damage;
-    public float rotateSpeed;
 }
