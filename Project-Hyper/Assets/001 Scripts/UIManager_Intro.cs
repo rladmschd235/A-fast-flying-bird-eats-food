@@ -31,9 +31,4 @@ public class UIManager_Intro : MonoBehaviour
         UIComponent.gameObject.SetActive(true);
         optionWindow.gameObject.SetActive(false);
     }
-
-    public void ClickStartButton()
-    {
-        SceneManager.LoadScene("MainScene");
-    }
 }

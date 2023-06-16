@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float dragDistance = 50f; // 드래그 거리
+    private float dragDistance = 200f; // 드래그 거리
     private Vector3 touchStart; // 터치 시작 위치
     private Vector3 touchEnd; // 터치 종료 위치 
 
     private bool isMobile = false;
     private bool isPC = false;
 
-    public bool isGround = false; // true : 땅에 닿아있을 때, false : 점프 중일 때
-    public int jumpCount = 2;
+    // public bool isGround = false; // true : 땅에 닿아있을 때, false : 점프 중일 때
+    // public int jumpCount = 2;
     public float dragDelay = 0.5f;
 
     private PlayerMovement movement;
-
+    
     private void Awake()
     {
         movement = GetComponent<PlayerMovement>();

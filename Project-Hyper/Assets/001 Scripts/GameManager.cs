@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
     public EnemySpawner enemySpawner;
     public UIManager_Play UIManager_Play;
+    public PlayerDamage playerDamage;
+    public SoundManager soundManager;
+    public SceneFader sceneFader;
 
     private void Awake()
     {

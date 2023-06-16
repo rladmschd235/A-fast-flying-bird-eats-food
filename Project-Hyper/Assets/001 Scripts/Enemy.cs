@@ -10,7 +10,9 @@ public class Enemy : MonoBehaviour
     public float normalSpeed;
     public float dashSpeed;
     public int posIndex;
+    public int killScore;
 
+    private bool isDeathPlayer;
     private Animator anim;
 
     private void Awake()
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour
         {
             if(health <= 0)
             {
+                isDeathPlayer = true;
                 GameManager.instance.enemySpawner.spawnCount -= 1;
                 anim.SetTrigger("OnDie");
             }
@@ -33,9 +36,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            isDeathPlayer = false;
+            GameManager.instance.enemySpawner.spawnCount -= 1;
+            anim.SetTrigger("OnDie");
+        }
+    }
+
     private void OnDeath()
     {
-        GameManager.instance.UIManager_Play.GetScore(1);
+        if(isDeathPlayer == true)
+        {
+            GameManager.instance.UIManager_Play.GetScore(killScore);
+        }
         GameManager.instance.enemySpawner.spawnCount--;
         GameManager.instance.enemySpawner.posCheck[posIndex-1] = 0;
         gameObject.SetActive(false);
@@ -49,5 +65,6 @@ public class Enemy : MonoBehaviour
         normalSpeed = data.normalSpeed;
         dashSpeed = data.dashSpeed;
         posIndex = data.posIndex = idx;
+        killScore = data.killScore;
     }
 }

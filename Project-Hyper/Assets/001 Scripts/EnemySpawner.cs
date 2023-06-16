@@ -34,6 +34,10 @@ public class EnemySpawner : MonoBehaviour
                 spawnCount++;
             }
         }
+        else
+        {
+            currentTime = 0;
+        }
     }
 
     private int RandomEnemyType()
@@ -82,4 +86,5 @@ public class SpawnData
     public float normalSpeed;
     public float dashSpeed;
     public int posIndex;
+    public int killScore;
 }
