@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float dragDistance = 200f; // 드래그 거리
+    private float dragDistance = 100f; // 드래그 거리
     private Vector3 touchStart; // 터치 시작 위치
     private Vector3 touchEnd; // 터치 종료 위치 
 
